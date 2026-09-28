@@ -1,0 +1,25 @@
+# FRIDAY free-brain config example (copy to ~/.hermes/config.yaml or adapt).
+# Default: Gemini AI Studio free primary (OpenAI-compat custom provider) +
+# OpenRouter :free fallback. No Ollama/Groq/local.
+# NOTE: GitHub Models (models.github.ai) is retired — do not use.
+# NOTE: Cerebras needs a card — do not use as default.
+# Signup: https://aistudio.google.com -> Get API Key (GOOGLE_API_KEY),
+#         https://openrouter.ai -> sk-or key (OPENROUTER_API_KEY, ':free' suffix required).
+
+model:
+  provider: custom # OpenAI-compat Gemini endpoint (Hermes custom provider)
+  name: gemini-2.5-flash-lite
+  base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+  api_mode: chat_completions
+  api_key_env: GOOGLE_API_KEY
+  # Fallback (uncomment to use OpenRouter :free instead):
+  # provider: openrouter
+  # name: qwen/qwen3-next-80b-a3b-instruct:free
+  # base_url: https://openrouter.ai/api/v1
+  # api_mode: chat_completions
+  # api_key_env: OPENROUTER_API_KEY
+
+mcp_servers:
+  friday_backend:
+    url: http://localhost:8000/sse
+    transport: sse
